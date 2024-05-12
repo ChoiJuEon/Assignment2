@@ -48,13 +48,9 @@ void filestat2(void)
 //파일 1의 시간 정보를 가져오는 함수 작성
 void filetime1(void)
 {
-    time1 = localtime(&stat1.st_mtime);
-    //printf("Time information of text1\n");
-    //printf("month : %d\n", time1->tm_mon+1);
-    //printf("date : %d\n", time1->tm_mday);
-    //printf("hour : %d\n", time1->tm_hour);
-    //printf("min : %d\n", time1->tm_min);
-    //return;
+    static struct tm temp1;
+    localtime_r(&stat1.st_mtime, &temp1);
+    time1 = &temp1;
 }
 
 
@@ -62,13 +58,9 @@ void filetime1(void)
 //파일 2의 시간 정보를 가져오는 함수 작성
 void filetime2(void)
 {
-    time2 = localtime(&stat2.st_mtime);
-    //printf("Time information of text2\n");
-    //printf("month : %d\n", time2->tm_mon + 1  );
-    //printf("date : %d\n", time2->tm_mday);
-    //printf("hour : %d\n", time2->tm_hour);
-    //printf("min : %d\n", time2->tm_min);
-    //return;
+    static struct tm temp2;
+    localtime_r(&stat2.st_mtime, &temp2);
+    time1 = &temp2;
 }
 
 //두 개의 파일 크기를 비교하는 함수 작성
