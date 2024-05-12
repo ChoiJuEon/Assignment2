@@ -28,13 +28,21 @@ int main(){
 }
 
 //파일 1의 정보를 가져오는 함수 작성
-void filestat1(){
-    
+void filestat1(void)
+{
+    stat("text1", &stat1); //text1 size,blocks 크기 저장
+    //printf("text1 size: %d\n", (int)stat1.st_size); //text1 size 출력하는 함수
+    //printf("text1 blocks : %d\n", (int)stat1.st_blocks); //text1 block 출력하는 함수
+    return;
 }
 
 //파일 2의 정보를 가져오는 함수 작성
-void filestat2(){
-    
+void filestat2(void)
+{
+    stat("text2", &stat2); //text2 size,blocks 크기 저장
+    //printf("text2 size: %d\n", (int)stat2.st_size); //text1 size 출력하는 함수
+    //printf("text2 blocks : %d\n", (int)stat2.st_blocks); //text1 block 출력하는 함수
+    return;
 }
 
 //파일 1의 시간 정보를 가져오는 함수 작성
