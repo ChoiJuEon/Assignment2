@@ -64,7 +64,7 @@ void filetime2(void)
 {
     time2 = localtime(&stat2.st_mtime);
     //printf("Time information of text2\n");
-    //printf("month : %d\n", time2->tm_mon + 1);
+    //printf("month : %d\n", time2->tm_mon + 1  );
     //printf("date : %d\n", time2->tm_mday);
     //printf("hour : %d\n", time2->tm_hour);
     //printf("min : %d\n", time2->tm_min);
