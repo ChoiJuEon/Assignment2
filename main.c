@@ -48,13 +48,9 @@ void filestat2(void)
 //파일 1의 시간 정보를 가져오는 함수 작성
 void filetime1(void)
 {
-    time1 = localtime(&stat1.st_mtime);
-    //printf("Time information of text1\n");
-    //printf("month : %d\n", time1->tm_mon+1);
-    //printf("date : %d\n", time1->tm_mday);
-    //printf("hour : %d\n", time1->tm_hour);
-    //printf("min : %d\n", time1->tm_min);
-    //return;
+   static struct tm temp1; 
+    localtime_r(&stat1.st_mtime, &temp1);
+    time1 = &temp1; 
 }
 
 
@@ -62,13 +58,9 @@ void filetime1(void)
 //파일 2의 시간 정보를 가져오는 함수 작성
 void filetime2(void)
 {
-    time2 = localtime(&stat2.st_mtime);
-    //printf("Time information of text2\n");
-    //printf("month : %d\n", time2->tm_mon + 1  );
-    //printf("date : %d\n", time2->tm_mday);
-    //printf("hour : %d\n", time2->tm_hour);
-    //printf("min : %d\n", time2->tm_min);
-    //return;
+    static struct tm temp2; // 정적 로컬 변수로 선언
+    localtime_r(&stat2.st_mtime, &temp2);
+    time2 = &temp2; // 전역 포인터에 로컬 변수의 주소 할당
 }
 
 //두 개의 파일 크기를 비교하는 함수 작성
@@ -103,10 +95,36 @@ void blockcmp(){
 
 //두 개의 파일 수정 날짜를 비교하는 함수 작성
 void datecmp(){
-    
+    printf("date compare\n");
+    if (time1->tm_year > time2->tm_year) {
+        printf("text1 is later\n");
+    } else if (time1->tm_year < time2->tm_year) {
+        printf("text2 is later\n");
+    } else if (time1->tm_mon > time2->tm_mon) {
+        printf("text1 is later\n");
+    } else if (time1->tm_mon < time2->tm_mon) {
+        printf("text2 is later\n");
+    } else if (time1->tm_mday > time2->tm_mday) {
+        printf("text1 is later\n");
+    } else if (time1->tm_mday < time2->tm_mday) {
+        printf("text2 is later\n");
+    } else {
+        printf("same date\n");
+    }   
 }
 
 //두 개의 파일 수정 시간을 비교하는 함수 작성
 void timecmp(){
-    
+    printf("time compare\n");
+    if (time1->tm_hour > time2->tm_hour) {
+        printf("text1 is later\n");
+    } else if (time1->tm_hour < time2->tm_hour) {
+        printf("text2 is later\n");
+    } else if (time1->tm_min > time2->tm_min) {
+        printf("text1 is later\n");
+    } else if (time1->tm_min < time2->tm_min) {
+        printf("text2 is later\n");
+    } else {
+        printf("same time\n");
+    }
 }
