@@ -58,9 +58,10 @@ void filetime1(void)
 //파일 2의 시간 정보를 가져오는 함수 작성
 void filetime2(void)
 {
-    static struct tm temp2; // 정적 로컬 변수로 선언
+    static struct tm temp2; 
     localtime_r(&stat2.st_mtime, &temp2);
-    time2 = &temp2; // 전역 포인터에 로컬 변수의 주소 할당
+    time2 = &temp2; 
+
 }
 
 //두 개의 파일 크기를 비교하는 함수 작성
